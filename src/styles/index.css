@@ -1,11 +1,10 @@
-/* 
+ .list-group-item:hover .hover-opacity-100 {
+    opacity: 1 !important;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+.transition {
+    transition: opacity 0.3s ease-in-out;
+          }
+ul {
+    margin-top: 20px;
+}
