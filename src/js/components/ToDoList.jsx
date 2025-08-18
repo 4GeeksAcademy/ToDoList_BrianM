@@ -26,7 +26,7 @@ const ToDoList = () => {
   
 
 
-  return (
+return (
 
 <div class="container"> 
   <form className="container d-flex flex-column justify-content-center align-items-center gap-2">        
@@ -54,7 +54,9 @@ const ToDoList = () => {
         </button>
       </li>
     ))}
-    <footer>Tienes tareas pendientes</footer>
+     <footer class="d-inline p-2 text-bg-primary">
+            Tienes {tasks.length} tareas pendientes.
+      </footer>
   </ul>
   ) : (
   <div className="text-center text-muted py-4">
