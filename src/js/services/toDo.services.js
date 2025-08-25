@@ -39,3 +39,21 @@ export const postTask = async (userName,inputValue,setTasks) => {
     }
 }
 
+// Add this new function to your existing toDo.services.js file
+export const eraseTask = async (idToDelete) => {
+    try {
+        const response = await fetch(`https://playground.4geeks.com/todo/todos/${idToDelete}`, {
+            method: "DELETE",
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error al eliminar la tarea: ${response.status}`);
+        }
+
+        console.log(`Tarea con ID ${idToDelete} eliminada exitosamente.`);
+        return true; 
+    } catch (error) {
+        console.error(`Error al eliminar la tarea con ID ${idToDelete}:`, error);
+        return false;
+    }
+};
