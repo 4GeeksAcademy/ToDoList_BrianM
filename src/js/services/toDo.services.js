@@ -1,3 +1,18 @@
+
+
+
+export const getAllUsers = async (setListaUsers) => {
+   try {
+       const responseData = await fetch (`https://playground.4geeks.com/todo/users`) 
+       
+       const data = await responseData.json();
+       setListaUsers(data.users)
+       return data
+
+   } catch (error) {
+       console.error(`Error al registrar al obtener la lista de tareas :${JSON.stringify(err)}`)
+   }
+};
 export const getUser = async (setTasks) => {
    try {
        const responseData = await fetch (`https://playground.4geeks.com/todo/users/Brian`, {
@@ -13,6 +28,7 @@ export const getUser = async (setTasks) => {
        console.error(`Error al registrar al obtener la lista de tareas :${JSON.stringify(err)}`)
    }
 };
+
 
 
 export const postTask = async (userName,inputValue,setTasks) => {

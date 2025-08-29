@@ -1,32 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { getUser, postTask, eraseTask } from '../services/toDo.services';
+import { getAllUsers, getUser, postTask, eraseTask } from '../services/toDo.services';
 import { addUser } from '../services/UserName.services';
 
 
 
 const ToDoList = () => {
+  const userName = "Brian"
+  const [listaUsers, setListaUsers] = useState ([]);
+
 
   const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [userName, setUsername] = useState('Brian');
+    useEffect(() => {
+    getAllUsers(setListaUsers)
+    
+
+    },[] ) 
+
   useEffect(() => {
-    addUser(userName)
-    getUser(setTasks)
-  },[]  
+    if (listaUsers.length > 0){
+      const existe = listaUsers.some((user)=> user.name===userName)
+      if (existe===true) {
+        getUser(setTasks)
+      }else {
+        addUser(userName)
+        getUser(setTasks)
+      } 
+
+    }     
+  },[listaUsers]  
 ) 
 
-console.log("Éste es mi estado", tasks)
-  // //const addTask = () => {
-  //   if (inputValue.trim () !== '') {
-  //    //setTasks([...tasks, {id:crypto.randomUUID(), text: inputValue}]);
-     
-  //     setInputValue('');
-
-  //   }
-  // };
   const handleKeyDowm = (event) => {
     if (event.key === 'Enter') {
-      console.log("click")
       event.preventDefault()
       postTask(userName, inputValue, setTasks);
       
